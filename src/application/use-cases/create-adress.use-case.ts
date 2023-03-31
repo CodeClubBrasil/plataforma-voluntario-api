@@ -1,6 +1,6 @@
 import { Address, State } from 'src/domain';
-import { AdressRepository } from '../repositories/address.repository';
 import { Injectable } from '@nestjs/common';
+import { AdressRepository } from '../repositories/address.repository';
 
 interface AddressRequest {
   zipCode: string;
@@ -9,16 +9,15 @@ interface AddressRequest {
   state: string;
 }
 
-interface AdressResponse {
-  adress: Address;
+interface AddressResponse {
+  AddressOutput: Address;
 }
 
-//por que a gente injeta no construtor esse repository sendo que nao tem decorator injectable nele nem provemos no modulo?
 @Injectable()
-export class CreateAdressUseCase {
-  constructor(private adressRepostiory: AdressRepository) {}
+export class CreateAddressUseCase {
+  constructor(private addressRepostiory: AdressRepository) {}
 
-  async execute(request: AddressRequest): Promise<AdressResponse> {
+  async execute(request: AddressRequest): Promise<AddressResponse> {
     const { zipCode, address, city, state } = request;
 
     console.log(
@@ -28,17 +27,17 @@ export class CreateAdressUseCase {
       state,
     );
 
-    const adress = new Address({
+    const AddressOutput = new Address({
       zipCode,
       address,
       city,
       state: 'type' as State,
     });
 
-    console.log('USE CASE - GETTING ID -> ' + adress.id);
+    console.log('USE CASE - GETTING ID -> ' + AddressOutput.id);
 
-    await this.adressRepostiory.create(adress);
+    await this.addressRepostiory.create(AddressOutput);
 
-    return { adress };
+    return { AddressOutput };
   }
 }
