@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { AdressRepository } from 'src/application/repositories';
+import { AddressRepository } from 'src/application/repositories';
 import { PrismaService } from '../prisma.service';
 import { Address } from 'src/domain';
+import { PrismaAddressMapper } from '../mappers';
 
 @Injectable()
-export class PrismaAdressRepository implements AdressRepository {
+export class PrismaAddressRepository implements AddressRepository {
   constructor(private prismaService: PrismaService) {}
 
   async create(address: Address): Promise<void> {
@@ -24,18 +25,28 @@ export class PrismaAdressRepository implements AdressRepository {
   update(code: string, data: any): Promise<void> {
     throw new Error('Method not implemented.');
   }
+
   findByCode(code: string): Promise<Address> {
     throw new Error('Method not implemented.');
   }
+
   findByLogin(login: string): Promise<Address> {
     throw new Error('Method not implemented.');
   }
-  count(): Promise<number> {
-    throw new Error('Method not implemented.');
+
+  async getAll(): Promise<Address[]> {
+    const address = await this.prismaService.address.findMany();
+
+    if (!address) {
+      return [];
+    }
+
+    const list: Address[] = [];
+    address.map((x) => list.push(PrismaAddressMapper.toDomain(x)));
+
+    return list;
   }
-  getAll(): Promise<Address[]> {
-    throw new Error('Method not implemented.');
-  }
+
   delete(code: string): Promise<void> {
     throw new Error('Method not implemented.');
   }
