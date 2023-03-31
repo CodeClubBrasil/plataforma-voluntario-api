@@ -27,14 +27,17 @@ export class CreateAddressUseCase {
       state,
     );
 
+    //TODO: VERIFY if these mappers with AddressRequest are valid here in ENUM I use it so that you understand that we use the enum.
+
     const AddressOutput = new Address({
       zipCode,
       address,
       city,
-      state: 'type' as State,
+      state: request.state as State,
     });
 
     console.log('USE CASE - GETTING ID -> ' + AddressOutput.id);
+    console.table(AddressOutput);
 
     await this.addressRepostiory.create(AddressOutput);
 
