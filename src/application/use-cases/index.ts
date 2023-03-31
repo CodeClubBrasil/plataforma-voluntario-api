@@ -1,1 +1,2 @@
-export * from './create-adress.use-case';
+export * from './create-address.use-case';
+export * from './get-address.use-case';
