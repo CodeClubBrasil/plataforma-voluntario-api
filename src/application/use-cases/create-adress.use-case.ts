@@ -1,6 +1,6 @@
 import { Address, State } from 'src/domain';
 import { Injectable } from '@nestjs/common';
-import { AdressRepository } from '../repositories/address.repository';
+import { AdressRepository } from '../repositories';
 
 interface AddressRequest {
   zipCode: string;

@@ -1,5 +1,5 @@
 import { randomUUID } from 'crypto';
-import { State } from './state.enum';
+import { State } from '.';
 
 export interface AdressData {
   zipCode: string;

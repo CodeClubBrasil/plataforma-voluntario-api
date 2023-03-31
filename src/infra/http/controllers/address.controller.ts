@@ -1,7 +1,7 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 import { ApiOperation } from '@nestjs/swagger';
-import { CreateAdressBody } from 'src/application/dtos/create-adress-body.dto';
-import { CreateAddressUseCase } from 'src/application/use-cases/create-adress.use-case';
+import { CreateAdressBody } from 'src/application/dtos';
+import { CreateAddressUseCase } from 'src/application/use-cases';
 
 @Controller('address')
 export class AdressController {

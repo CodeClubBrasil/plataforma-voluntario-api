@@ -1,7 +1,7 @@
-import { Address } from 'src/domain/address.entity';
-import { PrismaService } from '../prisma.service';
 import { Injectable } from '@nestjs/common';
-import { AdressRepository } from 'src/application/repositories/address.repository';
+import { AdressRepository } from 'src/application/repositories';
+import { PrismaService } from '../prisma.service';
+import { Address } from 'src/domain';
 
 @Injectable()
 export class PrismaAdressRepository implements AdressRepository {
