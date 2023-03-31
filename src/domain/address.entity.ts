@@ -1,6 +1,5 @@
-import { randomUUID } from "crypto";
-import { State } from "./state.enum";
-
+import { randomUUID } from 'crypto';
+import { State } from './state.enum';
 
 export interface AdressData {
   zipCode: string;
@@ -9,24 +8,20 @@ export interface AdressData {
   state: State;
 }
 
-
 export class Address {
-
-  private _id: string
+  private _id: string;
   private props: AdressData;
 
-  constructor(
-    props: AdressData
-  ) {
-    this._id = randomUUID()
+  constructor(props: AdressData) {
+    this._id = randomUUID();
     this.props = {
-      ...props
-    }
+      ...props,
+    };
   }
 
   //getter id
-  public get id():string {
-    return this._id
+  public get id(): string {
+    return this._id;
   }
 
   public set zipCode(zipCode: string) {
@@ -45,8 +40,6 @@ export class Address {
     return this.props.address;
   }
 
-
-
   public set city(city: string) {
     this.props.city = city;
   }
@@ -55,8 +48,6 @@ export class Address {
     return this.props.city;
   }
 
-
-
   public set state(state: State) {
     this.props.state = state;
   }
@@ -64,8 +55,4 @@ export class Address {
   public get state(): State {
     return this.props.state;
   }
-
-
-
-
 }

@@ -1,11 +1,11 @@
-import { Module } from "@nestjs/common";
-import { DatabaseModule } from "../prisma/database.module";
-import { AdressController } from "../../application/controllers/addres.controller";
-import { CreateAdressUseCase } from "src/application/domain/address/use-case/create-adress-use-case";
+import { Module } from '@nestjs/common';
+import { DatabaseModule } from '../prisma/database.module';
+import { CreateAdressUseCase } from 'src/application/use-cases/create-adress.use-case';
+import { AdressController } from './controllers/address.controller';
 
 @Module({
-    imports: [DatabaseModule],
-    controllers:[AdressController],
-    providers:[CreateAdressUseCase]
+  imports: [DatabaseModule],
+  controllers: [AdressController],
+  providers: [CreateAdressUseCase],
 })
-export class HttpModule{}
+export class HttpModule {}
