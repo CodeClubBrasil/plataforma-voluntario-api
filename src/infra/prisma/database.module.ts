@@ -1,16 +1,16 @@
 import { Module } from '@nestjs/common';
 import { PrismaService } from './prisma.service';
-import { PrismaAdressRepository } from './repositories/prisma-address-repository';
-import { AdressRepository } from 'src/application/repositories/address.repository';
+import { PrismaAddressRepository } from './repositories/prisma-address-repository';
+import { AddressRepository } from 'src/application/repositories/address.repository';
 
 @Module({
   providers: [
     PrismaService,
     {
-      provide: AdressRepository,
-      useClass: PrismaAdressRepository,
+      provide: AddressRepository,
+      useClass: PrismaAddressRepository,
     },
   ],
-  exports: [AdressRepository],
+  exports: [AddressRepository],
 })
 export class DatabaseModule {}

@@ -7,8 +7,6 @@ export abstract class Repository<TEntity> {
 
   abstract findByLogin(login: string): Promise<TEntity>;
 
-  abstract count(): Promise<number>;
-
   abstract getAll(): Promise<TEntity[]>;
 
   abstract delete(code: string): Promise<void>;

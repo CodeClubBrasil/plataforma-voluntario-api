@@ -1,6 +1,6 @@
 import { Address, State } from 'src/domain';
 import { Injectable } from '@nestjs/common';
-import { AdressRepository } from '../repositories';
+import { AddressRepository } from '../repositories';
 
 interface AddressRequest {
   zipCode: string;
@@ -15,7 +15,7 @@ interface AddressResponse {
 
 @Injectable()
 export class CreateAddressUseCase {
-  constructor(private addressRepostiory: AdressRepository) {}
+  constructor(private addressRepostiory: AddressRepository) {}
 
   async execute(request: AddressRequest): Promise<AddressResponse> {
     const { zipCode, address, city, state } = request;
