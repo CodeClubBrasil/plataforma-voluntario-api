@@ -1,8 +1,9 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { ApiOperation } from '@nestjs/swagger';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CreateAdressBody } from 'src/application/dtos';
 import { CreateAddressUseCase } from 'src/application/use-cases';
 
+@ApiTags('Address')
 @Controller('address')
 export class AdressController {
   constructor(private createAddressUseCase: CreateAddressUseCase) {}
@@ -17,14 +18,10 @@ export class AdressController {
     console.log(city + zipCode + address + state);
 
     const { AddressOutput } = await this.createAddressUseCase.execute({
-      zipCode,
-      address,
-      city,
-      state,
+      ...body,
     });
 
     console.log('CONTROLER ' + address);
-    console.table({ AddressOutput });
 
     return { AddressOutput };
   }
