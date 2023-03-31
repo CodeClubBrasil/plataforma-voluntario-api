@@ -1,12 +1,19 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CreateAdressBody } from 'src/application/dtos';
-import { CreateAddressUseCase } from 'src/application/use-cases';
+import {
+  CreateAddressUseCase,
+  GetAddressUseCase,
+} from 'src/application/use-cases';
+import { ListAddressViewModel } from '../view-models';
 
 @ApiTags('Address')
 @Controller('address')
-export class AdressController {
-  constructor(private createAddressUseCase: CreateAddressUseCase) {}
+export class AddressController {
+  constructor(
+    private createAddressUseCase: CreateAddressUseCase,
+    private getAddressUseCase: GetAddressUseCase,
+  ) {}
 
   @ApiOperation({ summary: 'Create a new Address' })
   @Post('create')
@@ -24,5 +31,16 @@ export class AdressController {
     console.log('CONTROLER ' + address);
 
     return { AddressOutput };
+  }
+
+  @ApiOperation({ summary: 'List Address' })
+  @Get('list')
+  async getAll() {
+    const { address } = await this.getAddressUseCase.execute();
+    if (!address) return 'Address Not Found';
+    return {
+      data: ListAddressViewModel.toHttpList(address),
+      metadata: { total: address.length },
+    };
   }
 }
