@@ -10,7 +10,7 @@ export class PrismaAdressRepository implements AdressRepository {
   async create(address: Address): Promise<void> {
     console.log('METODO CHAMADO');
 
-    await this.prismaService.adress.create({
+    await this.prismaService.address.create({
       data: {
         id: address.id,
         zipCode: address.zipCode,

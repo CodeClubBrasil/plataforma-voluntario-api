@@ -10,12 +10,10 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
-
-model Adress {
-  id          String    @id
+model Address {
+  id      String @id
   zipCode String
-  address     String
+  address String
   city    String
-  state      String
+  state   String
 }
