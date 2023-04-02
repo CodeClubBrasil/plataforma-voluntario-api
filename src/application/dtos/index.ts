@@ -1,1 +1,2 @@
-export * from './create-adress-body.dto';
+export * from './create-address-body.dto';
+export * from './update-address-body.dto';
