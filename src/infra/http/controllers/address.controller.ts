@@ -1,12 +1,14 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
 import { ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
-import { CreateAdressBody } from 'src/application/dtos';
+import { CreateAddressBody, UpdateAddressBody } from 'src/application/dtos';
 import {
   CreateAddressUseCase,
   FindByIdAddressUseCase,
   GetAddressUseCase,
+  UpdateAddressUseCase,
 } from 'src/application/use-cases';
 import { GetAddressViewModel, ListAddressViewModel } from '../view-models';
+import { Address } from 'src/domain';
 
 @ApiTags('Address')
 @Controller('address')
@@ -15,11 +17,12 @@ export class AddressController {
     private createAddressUseCase: CreateAddressUseCase,
     private getAddressUseCase: GetAddressUseCase,
     private findByIdAddressUseCase: FindByIdAddressUseCase,
+    private updateAddressUseCase: UpdateAddressUseCase,
   ) {}
 
   @ApiOperation({ summary: 'Create a new Address' })
   @Post('create')
-  async create(@Body() body: CreateAdressBody) {
+  async create(@Body() body: CreateAddressBody) {
     console.log('GETTING INTO CONTROLLER');
 
     const { zipCode, address, city, state } = body;
@@ -55,5 +58,17 @@ export class AddressController {
     });
 
     return { data: GetAddressViewModel.toHttp(data) };
+  }
+
+  @ApiOperation({ summary: 'Updated Address' })
+  @ApiParam({ name: 'code', required: true })
+  @Put(':code')
+  async update(@Param() params, @Body() body: UpdateAddressBody) {
+    const { AddressOutput } = await this.updateAddressUseCase.execute(
+      params.code,
+      body,
+    );
+
+    return { AddressOutput };
   }
 }

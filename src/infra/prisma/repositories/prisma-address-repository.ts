@@ -22,8 +22,15 @@ export class PrismaAddressRepository implements AddressRepository {
     });
   }
 
-  update(code: string, data: any): Promise<void> {
-    throw new Error('Method not implemented.');
+  async update(code: string, data: Address) {
+    const addressMapper = PrismaAddressMapper.toPrisma(data);
+
+    await this.prismaService.address.update({
+      where: { id: code },
+      data: {
+        ...addressMapper,
+      },
+    });
   }
 
   async findByCode(code: string): Promise<Address> {

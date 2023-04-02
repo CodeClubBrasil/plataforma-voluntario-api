@@ -5,11 +5,17 @@ import {
   CreateAddressUseCase,
   FindByIdAddressUseCase,
   GetAddressUseCase,
+  UpdateAddressUseCase,
 } from 'src/application/use-cases';
 
 @Module({
   imports: [DatabaseModule],
   controllers: [AddressController],
-  providers: [CreateAddressUseCase, GetAddressUseCase, FindByIdAddressUseCase],
+  providers: [
+    CreateAddressUseCase,
+    GetAddressUseCase,
+    FindByIdAddressUseCase,
+    UpdateAddressUseCase,
+  ],
 })
 export class HttpModule {}
