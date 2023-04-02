@@ -12,8 +12,8 @@ export class Address {
   private _id: string;
   private props: AdressData;
 
-  constructor(props: AdressData) {
-    this._id = randomUUID();
+  constructor(props: AdressData, id?: string) {
+    this._id = id ?? randomUUID();
     this.props = {
       ...props,
     };
