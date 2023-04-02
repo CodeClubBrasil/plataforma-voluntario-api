@@ -1,11 +1,12 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { CreateAdressBody } from 'src/application/dtos';
 import {
   CreateAddressUseCase,
+  FindByIdAddressUseCase,
   GetAddressUseCase,
 } from 'src/application/use-cases';
-import { ListAddressViewModel } from '../view-models';
+import { GetAddressViewModel, ListAddressViewModel } from '../view-models';
 
 @ApiTags('Address')
 @Controller('address')
@@ -13,6 +14,7 @@ export class AddressController {
   constructor(
     private createAddressUseCase: CreateAddressUseCase,
     private getAddressUseCase: GetAddressUseCase,
+    private findByIdAddressUseCase: FindByIdAddressUseCase,
   ) {}
 
   @ApiOperation({ summary: 'Create a new Address' })
@@ -42,5 +44,16 @@ export class AddressController {
       data: ListAddressViewModel.toHttpList(address),
       metadata: { total: address.length },
     };
+  }
+
+  @ApiOperation({ summary: 'Get Address by code' })
+  @ApiParam({ name: 'code', required: true })
+  @Get(':code')
+  async findByCode(@Param() params) {
+    const { data } = await this.findByIdAddressUseCase.execute({
+      code: params.code,
+    });
+
+    return { data: GetAddressViewModel.toHttp(data) };
   }
 }

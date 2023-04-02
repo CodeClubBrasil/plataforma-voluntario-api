@@ -26,8 +26,15 @@ export class PrismaAddressRepository implements AddressRepository {
     throw new Error('Method not implemented.');
   }
 
-  findByCode(code: string): Promise<Address> {
-    throw new Error('Method not implemented.');
+  async findByCode(code: string): Promise<Address> {
+    const address = await this.prismaService.address.findUnique({
+      where: { id: code },
+    });
+    if (!address) {
+      return null;
+    } else {
+      return PrismaAddressMapper.toDomain(address);
+    }
   }
 
   findByLogin(login: string): Promise<Address> {
