@@ -11,9 +11,15 @@ datasource db {
 }
 
 model Address {
-  id       String @id
-  zip_code String
-  address  String
-  city     String
-  state    String
+  id         String    @id @default(uuid())
+  zip_code   String
+  address    String
+  city       String
+  state      String
+  active     Boolean
+  is_deleted Boolean
+  created_at DateTime  @default(now())
+  updated_at DateTime? @updatedAt
+
+  @@map("address")
 }
