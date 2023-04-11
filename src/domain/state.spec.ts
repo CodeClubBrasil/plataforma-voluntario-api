@@ -1,4 +1,4 @@
-import { State } from "./state.enum";
+import { State } from './state.enum';
 
 describe('STATE_ENUM', () => {
   it('should return enum values with lenght equal to 2', () => {
