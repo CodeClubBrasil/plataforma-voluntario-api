@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { AddressRepository } from '../repositories';
 
 interface AddressRequest {
-  zipCode: string;
+  zip_code: string;
   address: string;
   city: string;
   state: string;
@@ -18,10 +18,10 @@ export class CreateAddressUseCase {
   constructor(private addressRepostiory: AddressRepository) {}
 
   async execute(request: AddressRequest): Promise<AddressResponse> {
-    const { zipCode, address, city, state } = request;
+    const { zip_code, address, city, state } = request;
 
     console.log(
-      'USE CASE CHECK IF DATA IS COMING' + zipCode,
+      'USE CASE CHECK IF DATA IS COMING' + zip_code,
       address,
       city,
       state,
@@ -30,9 +30,9 @@ export class CreateAddressUseCase {
     //TODO: VERIFY if these mappers with AddressRequest are valid here in ENUM I use it so that you understand that we use the enum.
 
     const AddressOutput = new Address({
-      zipCode,
-      address,
-      city,
+      zipCode: request.zip_code,
+      address: request.address,
+      city: request.city,
       state: request.state as State,
     });
 

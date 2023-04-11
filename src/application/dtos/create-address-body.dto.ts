@@ -5,7 +5,7 @@ import { State } from 'src/domain';
 export class CreateAddressBody {
   @ApiProperty()
   @IsNotEmpty()
-  zipCode: string;
+  zip_code: string;
 
   @ApiProperty()
   @IsNotEmpty()

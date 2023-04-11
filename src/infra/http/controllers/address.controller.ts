@@ -8,7 +8,6 @@ import {
   UpdateAddressUseCase,
 } from 'src/application/use-cases';
 import { GetAddressViewModel, ListAddressViewModel } from '../view-models';
-import { Address } from 'src/domain';
 
 @ApiTags('Address')
 @Controller('address')
@@ -25,9 +24,9 @@ export class AddressController {
   async create(@Body() body: CreateAddressBody) {
     console.log('GETTING INTO CONTROLLER');
 
-    const { zipCode, address, city, state } = body;
+    const { zip_code, address, city, state } = body;
 
-    console.log(city + zipCode + address + state);
+    console.log(city + zip_code + address + state);
 
     const { AddressOutput } = await this.createAddressUseCase.execute({
       ...body,

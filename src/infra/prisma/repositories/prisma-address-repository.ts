@@ -14,7 +14,7 @@ export class PrismaAddressRepository implements AddressRepository {
     await this.prismaService.address.create({
       data: {
         id: address.id,
-        zipCode: address.zipCode,
+        zip_code: address.zipCode,
         city: address.city,
         address: address.address,
         state: address.state,

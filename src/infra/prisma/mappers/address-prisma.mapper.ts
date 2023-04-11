@@ -5,7 +5,7 @@ export class PrismaAddressMapper {
   static toPrisma(address: Address) {
     return {
       id: address.id,
-      zipCode: address.zipCode,
+      zip_code: address.zipCode,
       address: address.address,
       city: address.city,
       state: address.state as State,
@@ -16,7 +16,7 @@ export class PrismaAddressMapper {
     return new Address(
       {
         address: raw.address,
-        zipCode: raw.zipCode,
+        zipCode: raw.zip_code,
         city: raw.city,
         state: raw.state as State,
       },

@@ -3,7 +3,7 @@ import { AddressRepository } from '../repositories';
 import { Address, State } from 'src/domain';
 
 interface AddressUpdateRequest {
-  zipCode: string;
+  zip_code: string;
   address: string;
   city: string;
   state: string;
@@ -25,7 +25,7 @@ export class UpdateAddressUseCase {
 
     if (!AddressOutput) throw new Error(`Not Found address with code ${code}`);
 
-    AddressOutput.zipCode = data.zipCode;
+    AddressOutput.zipCode = data.zip_code;
     AddressOutput.address = data.address;
     AddressOutput.city = data.city;
     AddressOutput.state = data.state as State;

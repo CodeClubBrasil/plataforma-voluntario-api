@@ -6,7 +6,7 @@ export class ListAddressViewModel {
     address.forEach((_address) => {
       const viewModel = {
         id: _address.id,
-        zipCode: _address.zipCode,
+        zip_code: _address.zipCode,
         address: _address.address,
         city: _address.city,
         state: _address.state,

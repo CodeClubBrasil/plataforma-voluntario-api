@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class UpdateAddressBody {
   @ApiProperty()
-  zipCode: string;
+  zip_code: string;
 
   @ApiProperty()
   address: string;
