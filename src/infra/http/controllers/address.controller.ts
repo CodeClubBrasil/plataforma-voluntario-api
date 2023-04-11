@@ -1,13 +1,24 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+  UseFilters,
+} from '@nestjs/common';
 import { ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { CreateAddressBody, UpdateAddressBody } from 'src/application/dtos';
 import {
   CreateAddressUseCase,
+  DeleteAddressUseCase,
   FindByIdAddressUseCase,
   GetAddressUseCase,
   UpdateAddressUseCase,
 } from 'src/application/use-cases';
 import { GetAddressViewModel, ListAddressViewModel } from '../view-models';
+import { HttpExceptionNotFound } from '../exceptions';
 
 @ApiTags('Address')
 @Controller('address')
@@ -17,6 +28,7 @@ export class AddressController {
     private getAddressUseCase: GetAddressUseCase,
     private findByIdAddressUseCase: FindByIdAddressUseCase,
     private updateAddressUseCase: UpdateAddressUseCase,
+    private deleteAddressUseCase: DeleteAddressUseCase,
   ) {}
 
   @ApiOperation({ summary: 'Create a new Address' })
@@ -50,6 +62,7 @@ export class AddressController {
 
   @ApiOperation({ summary: 'Get Address by code' })
   @ApiParam({ name: 'code', required: true })
+  @UseFilters(HttpExceptionNotFound)
   @Get(':code')
   async findByCode(@Param() params) {
     const { data } = await this.findByIdAddressUseCase.execute({
@@ -61,6 +74,7 @@ export class AddressController {
 
   @ApiOperation({ summary: 'Updated Address' })
   @ApiParam({ name: 'code', required: true })
+  @UseFilters(HttpExceptionNotFound)
   @Put(':code')
   async update(@Param() params, @Body() body: UpdateAddressBody) {
     const { AddressOutput } = await this.updateAddressUseCase.execute(
@@ -69,5 +83,15 @@ export class AddressController {
     );
 
     return { AddressOutput };
+  }
+
+  @ApiOperation({ summary: 'Deleted a Address' })
+  @ApiParam({ name: 'code', required: true })
+  @UseFilters(HttpExceptionNotFound)
+  @Delete(':code')
+  async remove(@Param() params) {
+    const deleteAddress = this.deleteAddressUseCase.execute(params.code);
+
+    return deleteAddress;
   }
 }

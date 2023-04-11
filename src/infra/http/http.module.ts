@@ -3,6 +3,7 @@ import { DatabaseModule } from '../prisma/database.module';
 import { AddressController } from './controllers/address.controller';
 import {
   CreateAddressUseCase,
+  DeleteAddressUseCase,
   FindByIdAddressUseCase,
   GetAddressUseCase,
   UpdateAddressUseCase,
@@ -16,6 +17,7 @@ import {
     GetAddressUseCase,
     FindByIdAddressUseCase,
     UpdateAddressUseCase,
+    DeleteAddressUseCase,
   ],
 })
 export class HttpModule {}

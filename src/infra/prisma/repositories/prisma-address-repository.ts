@@ -46,7 +46,9 @@ export class PrismaAddressRepository implements AddressRepository {
   }
 
   async getAll(): Promise<Address[]> {
-    const address = await this.prismaService.address.findMany();
+    const address = await this.prismaService.address.findMany({
+      where: { is_deleted: false },
+    });
 
     if (!address) {
       return [];
@@ -58,7 +60,13 @@ export class PrismaAddressRepository implements AddressRepository {
     return list;
   }
 
-  delete(code: string): Promise<void> {
-    throw new Error('Method not implemented.');
+  async delete(code: string): Promise<void> {
+    await this.prismaService.address.update({
+      where: { id: code },
+      data: {
+        is_deleted: true,
+        updated_at: new Date(),
+      },
+    });
   }
 }

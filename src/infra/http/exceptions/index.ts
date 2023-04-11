@@ -1,1 +1,1 @@
-export * from './http-exepetion-not-found';
+export * from './http-exception-not-found';
