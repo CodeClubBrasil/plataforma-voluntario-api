@@ -11,9 +11,9 @@ datasource db {
 }
 
 model Address {
-  id      String @id
-  zipCode String
-  address String
-  city    String
-  state   String
+  id       String @id
+  zip_code String
+  address  String
+  city     String
+  state    String
 }
