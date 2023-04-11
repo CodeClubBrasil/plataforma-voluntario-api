@@ -8,7 +8,8 @@ export class DeleteAddressUseCase {
   async execute(code: string): Promise<void> {
     const AddressOutput = await this.addressRepostiory.findByCode(code);
 
-    if (!AddressOutput) throw new Error(`Not Found address with code ${code}`);
+    if (!AddressOutput || AddressOutput.isDeleted === true)
+      throw new Error(`Not Found address with code ${code}`);
 
     AddressOutput.updatedAt = new Date();
     AddressOutput.isDeleted = true;

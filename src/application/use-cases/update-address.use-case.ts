@@ -24,7 +24,8 @@ export class UpdateAddressUseCase {
   ): Promise<AddressUpdateResponse> {
     const AddressOutput = await this.addressRepostiory.findByCode(code);
 
-    if (!AddressOutput) throw new Error(`Not Found address with code ${code}`);
+    if (!AddressOutput || AddressOutput.isDeleted === true)
+      throw new Error(`Not Found address with code ${code}`);
 
     AddressOutput.zipCode = data.zip_code;
     AddressOutput.address = data.address;

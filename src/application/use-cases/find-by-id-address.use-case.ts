@@ -19,7 +19,8 @@ export class FindByIdAddressUseCase {
   }: FindByIdAddressInput): Promise<FindByIdAddressOutput> {
     const data = await this.addressRepostiory.findByCode(code);
 
-    if (!data) throw new Error(`Not Found address with code ${code}`);
+    if (!data || data.isDeleted === true)
+      throw new Error(`Not Found address with code ${code}`);
 
     return { data };
   }
