@@ -34,6 +34,9 @@ export class CreateAddressUseCase {
       address: request.address,
       city: request.city,
       state: request.state as State,
+      active: true,
+      isDeleted: false,
+      createdAt: new Date(),
     });
 
     console.log('USE CASE - GETTING ID -> ' + AddressOutput.id);

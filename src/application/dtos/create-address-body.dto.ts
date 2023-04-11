@@ -18,4 +18,10 @@ export class CreateAddressBody {
   @ApiProperty({ enum: State })
   @IsNotEmpty()
   state: string;
+
+  @ApiProperty({ type: Boolean })
+  active: boolean;
+
+  @ApiProperty({ type: Date })
+  created_at: Date;
 }

@@ -7,6 +7,9 @@ export class GetAddressViewModel {
       address: address.address,
       city: address.city,
       state: address.state as State,
+      active: address.active,
+      created_at: address.createdAt,
+      updated_at: address.updatedAt,
     };
   }
 }

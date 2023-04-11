@@ -7,6 +7,7 @@ interface AddressUpdateRequest {
   address: string;
   city: string;
   state: string;
+  active: boolean;
 }
 
 interface AddressUpdateResponse {
@@ -29,6 +30,8 @@ export class UpdateAddressUseCase {
     AddressOutput.address = data.address;
     AddressOutput.city = data.city;
     AddressOutput.state = data.state as State;
+    AddressOutput.active = data.active;
+    AddressOutput.updatedAt = new Date();
 
     await this.addressRepostiory.update(code, data);
 

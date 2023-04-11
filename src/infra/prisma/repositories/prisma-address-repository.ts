@@ -10,14 +10,11 @@ export class PrismaAddressRepository implements AddressRepository {
 
   async create(address: Address): Promise<void> {
     console.log('METODO CHAMADO');
+    const addressMapper = PrismaAddressMapper.toPrisma(address);
 
     await this.prismaService.address.create({
       data: {
-        id: address.id,
-        zip_code: address.zipCode,
-        city: address.city,
-        address: address.address,
-        state: address.state,
+        ...addressMapper,
       },
     });
   }

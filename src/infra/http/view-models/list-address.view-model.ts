@@ -10,6 +10,9 @@ export class ListAddressViewModel {
         address: _address.address,
         city: _address.city,
         state: _address.state,
+        active: _address.active,
+        created_at: _address.createdAt,
+        updated_at: _address.updatedAt,
       };
       _addresss.push(viewModel);
     });

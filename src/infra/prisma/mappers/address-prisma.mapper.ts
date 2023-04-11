@@ -9,6 +9,10 @@ export class PrismaAddressMapper {
       address: address.address,
       city: address.city,
       state: address.state as State,
+      active: address.active,
+      is_deleted: address.isDeleted,
+      created_at: address.createdAt,
+      updated_at: address.updatedAt,
     };
   }
 
@@ -19,6 +23,10 @@ export class PrismaAddressMapper {
         zipCode: raw.zip_code,
         city: raw.city,
         state: raw.state as State,
+        active: raw.active,
+        isDeleted: raw.is_deleted,
+        createdAt: raw.created_at,
+        updatedAt: raw.updated_at,
       },
       raw.id,
     );

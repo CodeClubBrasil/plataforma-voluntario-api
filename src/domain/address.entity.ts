@@ -6,6 +6,10 @@ export interface AdressData {
   address: string;
   city: string;
   state: State;
+  active: boolean;
+  isDeleted: boolean;
+  createdAt: Date;
+  updatedAt?: Date | null;
 }
 
 export class Address {
@@ -16,10 +20,10 @@ export class Address {
     this._id = id ?? randomUUID();
     this.props = {
       ...props,
+      createdAt: props.createdAt ?? new Date(),
     };
   }
 
-  //getter id
   public get id(): string {
     return this._id;
   }
@@ -54,5 +58,30 @@ export class Address {
 
   public get state(): State {
     return this.props.state;
+  }
+
+  public get active(): boolean {
+    return this.props.active;
+  }
+  public set active(active: boolean) {
+    this.props.active = active;
+  }
+
+  public get isDeleted(): boolean {
+    return this.props.isDeleted;
+  }
+  public set isDeleted(isDeleted: boolean) {
+    this.props.isDeleted = isDeleted;
+  }
+
+  public get createdAt(): Date {
+    return this.props.createdAt;
+  }
+
+  public get updatedAt(): Date {
+    return this.props.updatedAt;
+  }
+  public set updatedAt(updatedAt: Date) {
+    this.props.updatedAt = updatedAt;
   }
 }
