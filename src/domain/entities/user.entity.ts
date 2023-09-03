@@ -1,6 +1,6 @@
-import { State } from '../enums';
-import { AvailableTime } from './available-time.entity';
+import { State } from '@domain/enums';
 import { EntityBase, EntityBaseData } from './entity-base';
+import { AvailableTime } from './available-time.entity';
 
 export interface UserData extends EntityBaseData {
   name: string;
