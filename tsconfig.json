@@ -13,10 +13,18 @@
     "incremental": true,
     "skipLibCheck": true,
     "strict": true,
-    "strictNullChecks": false,
+    "strictNullChecks": true,
+    "resolveJsonModule": true,
     "noImplicitAny": false,
     "strictBindCallApply": false,
+    "strictPropertyInitialization": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@application/*": ["./src/application/*"],
+      "@domain/*": ["./src/domain/*"],
+      "@infra/*": ["./src/infra/*"],
+      "@test/*": ["./test/*"]
+    }
   }
 }
