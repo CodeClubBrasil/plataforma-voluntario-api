@@ -42,7 +42,7 @@ export class EntityBase {
     this.props.isDeleted = isDeleted;
   }
 
-  public get updatedAt(): Date | null | undefined {
+  public get updatedAt(): Date | null {
     return this.props.updatedAt;
   }
   public set updatedAt(updatedAt: Date) {
