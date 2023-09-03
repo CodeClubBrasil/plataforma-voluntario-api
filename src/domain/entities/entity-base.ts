@@ -1,6 +1,6 @@
 import { randomUUID } from 'crypto';
 
-export interface EnityBaseData {
+export interface EntityBaseData {
   id: string;
   active: boolean;
   isDeleted: boolean;
@@ -8,11 +8,11 @@ export interface EnityBaseData {
   updatedAt?: Date | null;
 }
 
-export class EnityBase {
+export class EntityBase {
   protected _id: string;
-  protected props: EnityBaseData;
+  protected props: EntityBaseData;
 
-  constructor(props: EnityBaseData, id?: string) {
+  constructor(props: EntityBaseData, id?: string) {
     this._id = id ?? randomUUID();
     this.props = {
       ...props,
