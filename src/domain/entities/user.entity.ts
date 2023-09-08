@@ -18,8 +18,8 @@ export interface UserData extends EntityBaseData {
 export class User extends EntityBase {
   protected props: UserData;
 
-  constructor(props: UserData, id?: string) {
-    super(props, id);
+  constructor(props: UserData) {
+    super(props);
     this.props = {
       ...props,
     };

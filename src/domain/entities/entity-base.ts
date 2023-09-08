@@ -1,7 +1,7 @@
 import { randomUUID } from 'crypto';
 
 export interface EntityBaseData {
-  id: string;
+  id?: string;
   active: boolean;
   isDeleted: boolean;
   createdAt: Date;

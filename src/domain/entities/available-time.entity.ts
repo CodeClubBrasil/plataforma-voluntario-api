@@ -10,8 +10,8 @@ export interface AvailableTimeData extends EntityBaseData {
 export class AvailableTime extends EntityBase {
   protected props: AvailableTimeData;
 
-  constructor(props: AvailableTimeData, id?: string) {
-    super(props, id);
+  constructor(props: AvailableTimeData) {
+    super(props);
     this.props = {
       ...props,
     };
