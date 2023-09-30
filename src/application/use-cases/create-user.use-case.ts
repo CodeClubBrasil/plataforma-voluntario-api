@@ -1,6 +1,6 @@
 import { AvailableTimeDto } from "@application/dtos";
 import { UserRepository } from "@application/repositories";
-import { AvailableTime, AvailableTimeData, User, UserData } from "@domain/entities";
+import { AvailableTime, AvailableTimeData, User } from "@domain/entities";
 import { State, Weekday } from "@domain/enums";
 import { Injectable } from "@nestjs/common";
 
@@ -13,7 +13,7 @@ export class UserUseCase {
     const availableTimeDtos = request.available_time;
     const availableTimes: AvailableTime[] = availableTimeDtos.map(dtoToData);
 
-    const userProps: UserData = {
+    const UserOutput = new User({
       name: request.name,
       lastName: request.last_name,
       telephone: request.telephone,
@@ -26,15 +26,14 @@ export class UserUseCase {
       active: true,
       isDeleted: false,
       createdAt: new Date(),
-      updatedAt: new Date(),
+      updatedAt: null,
       availableTime: availableTimes,
-    };
+    });
 
-    const user = new User(userProps);
 
-    await this.userRepository.create(user);
+    await this.userRepository.create(UserOutput);
 
-    return { UserOutput: user };
+    return { UserOutput };
   }
 }
 
@@ -46,7 +45,7 @@ function dtoToData(dto: AvailableTimeDto): AvailableTime {
     active: dto.active,
     isDeleted: dto.is_deleted,
     createdAt: dto.created_at,
-    updatedAt: dto.updated_at
+    updatedAt: null
   };
 
   return new AvailableTime(availableTimeData);
