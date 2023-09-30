@@ -5,7 +5,7 @@ import { PrismaService } from './prisma.service';
   providers: [
     PrismaService,
     {
-      provide: "",
+      provide: '',
       useClass: null,
     },
   ],

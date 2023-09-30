@@ -1,15 +1,14 @@
-import { AvailableTimeDto } from "@application/dtos";
-import { UserRepository } from "@application/repositories";
-import { AvailableTime, AvailableTimeData, User } from "@domain/entities";
-import { State, Weekday } from "@domain/enums";
-import { Injectable } from "@nestjs/common";
+import { AvailableTimeDto } from '@application/dtos';
+import { UserRepository } from '@application/repositories';
+import { AvailableTime, AvailableTimeData, User } from '@domain/entities';
+import { State, Weekday } from '@domain/enums';
+import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class UserUseCase {
-  constructor(private userRepository: UserRepository,) {}
+  constructor(private userRepository: UserRepository) {}
 
   async execute(request: UserRequest): Promise<UserResponse> {
-    
     const availableTimeDtos = request.available_time;
     const availableTimes: AvailableTime[] = availableTimeDtos.map(dtoToData);
 
@@ -30,7 +29,6 @@ export class UserUseCase {
       availableTime: availableTimes,
     });
 
-
     await this.userRepository.create(UserOutput);
 
     return { UserOutput };
@@ -45,7 +43,7 @@ function dtoToData(dto: AvailableTimeDto): AvailableTime {
     active: dto.active,
     isDeleted: dto.is_deleted,
     createdAt: dto.created_at,
-    updatedAt: null
+    updatedAt: null,
   };
 
   return new AvailableTime(availableTimeData);

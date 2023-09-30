@@ -37,7 +37,7 @@ export class UpdateUserUseCase {
     UserOutput.city = data.city;
     UserOutput.name = data.name;
     UserOutput.state = data.state as State;
-    UserOutput.neighborhood = data.neighborhood
+    UserOutput.neighborhood = data.neighborhood;
     UserOutput.active = data.active;
     UserOutput.telephone = data.telephone;
     UserOutput.email = data.email;
