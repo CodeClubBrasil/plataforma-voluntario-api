@@ -32,10 +32,10 @@ export class UpdateUserUseCase {
     if (!UserOutput)
       throw new Error(`Not found user with username ${username}`);
 
+    UserOutput.name = data.name;
     UserOutput.lastName = data.last_name;
     UserOutput.password = data.password;
     UserOutput.city = data.city;
-    UserOutput.name = data.name;
     UserOutput.state = data.state as State;
     UserOutput.neighborhood = data.neighborhood;
     UserOutput.active = data.active;
