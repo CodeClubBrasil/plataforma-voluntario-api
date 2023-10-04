@@ -1,11 +1,18 @@
+import { ApiProperty } from '@nestjs/swagger';
+
 export class AvailableTimeControllerDto {
-    id: string;
-    week_day: string;
-    time_start: Date;
-    time_end: Date;
-    active: boolean;
-    is_deleted: boolean;
-    created_at: Date;
-    updated_at: Date;
-  }
-  
+  @ApiProperty()
+  week_day: string;
+  @ApiProperty()
+  time_start: Date;
+  @ApiProperty()
+  time_end: Date;
+  @ApiProperty()
+  active: boolean;
+  @ApiProperty()
+  is_deleted: boolean;
+  @ApiProperty()
+  created_at: Date;
+  @ApiProperty()
+  updated_at: Date;
+}
