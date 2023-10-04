@@ -1,5 +1,4 @@
 export class AvailableTimeDto {
-  id: string;
   week_day: string;
   time_start: Date;
   time_end: Date;

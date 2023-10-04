@@ -1,10 +1,31 @@
+import { State } from '@domain/enums';
+import { ApiProperty } from '@nestjs/swagger';
+
 export class UserUpdateControllerDto {
-    name: string;
-    last_name: string;
-    password: string;
-    city: string;
-    state: string;
-    neighborhood: string;
-    telephone: string[];
-    email: string;
+  @ApiProperty()
+  name: string;
+
+  @ApiProperty()
+  last_name: string;
+
+  @ApiProperty()
+  password: string;
+
+  @ApiProperty()
+  city: string;
+
+  @ApiProperty({ enum: State })
+  state: string;
+
+  @ApiProperty()
+  neighborhood: string;
+
+  @ApiProperty()
+  active: boolean;
+
+  @ApiProperty()
+  telephone: string[];
+
+  @ApiProperty()
+  email: string;
 }
