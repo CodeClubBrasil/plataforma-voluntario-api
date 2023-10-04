@@ -1,4 +1,3 @@
-import { DatabaseModule } from '@infra/prisma/database.module';
 import { Module } from '@nestjs/common';
 import { UserController } from './controllers';
 import {
@@ -6,6 +5,7 @@ import {
   GetByUsernameUseCase,
   UpdateUserUseCase,
 } from '@application/use-cases';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
   imports: [DatabaseModule],
