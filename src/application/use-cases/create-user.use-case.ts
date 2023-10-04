@@ -5,7 +5,7 @@ import { State, Weekday } from '@domain/enums';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class UserUseCase {
+export class CreateUserUseCase {
   constructor(private userRepository: UserRepository) {}
 
   async execute(request: UserRequest): Promise<UserResponse> {
