@@ -8,6 +8,7 @@ import { ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { UserControllerDto } from '../dtos';
 import { UserUpdateControllerDto } from '../dtos/user-update.controller.dto';
 import { UserViewModel } from '../view-models';
+import { User } from '@domain/entities';
 
 @ApiTags('User')
 @Controller('user')
@@ -42,12 +43,12 @@ export class UserController {
   @ApiOperation({ summary: 'Updated a user' })
   @ApiParam({ name: 'username', required: true })
   @Put(':username')
-  async update(@Param() params, @Body() body: UserUpdateControllerDto) {
-    const { UserOutput } = await this._updateUserUseCase.execute(
+  async update(@Param() params, @Body() body: UserControllerDto) {
+    const UserOutput = this._updateUserUseCase.execute(
       params.username,
       body,
     );
 
-    return { UserOutput };
+    return UserOutput ;
   }
 }

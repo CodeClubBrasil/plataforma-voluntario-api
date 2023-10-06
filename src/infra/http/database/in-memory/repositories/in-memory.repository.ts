@@ -1,5 +1,5 @@
 import { UserRepository } from '@application/repositories';
-import { User } from '@domain/entities';
+import { User, UserData } from '@domain/entities';
 import { State } from '@domain/enums';
 import { UserUpdateControllerDto } from '@infra/http/dtos/user-update.controller.dto';
 import { Injectable } from '@nestjs/common';
@@ -19,15 +19,15 @@ export class InMemoryUserRepository implements UserRepository {
     throw new Error('Method not implemented.');
   }
 
-  async update(username: string, data: UserUpdateControllerDto): Promise<void> {
+  async update(username: string, data: UserData): Promise<void> {
     const userFindByUsername = this.user.find(
       (user) => user.email === username,
     );
-
-    userFindByUsername.lastName = data.last_name;
+    
+    userFindByUsername.name = data.name;
+    userFindByUsername.lastName = data.lastName;
     userFindByUsername.password = data.password;
     userFindByUsername.city = data.city;
-    userFindByUsername.name = data.name;
     userFindByUsername.state = data.state as State;
     userFindByUsername.neighborhood = data.neighborhood;
     userFindByUsername.telephone = data.telephone;
