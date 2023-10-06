@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { UserRepository } from '../repositories';
 import { User } from '@domain/entities';
-import { State } from '@domain/enums';
 
 interface UpdateUserRequest {
   last_name: string;
@@ -26,25 +25,25 @@ export class UpdateUserUseCase {
   async execute(
     username: string,
     data: UpdateUserRequest,
-  ): Promise<UpdateUserResponse> {
+  ): Promise<User> {
     const UserOutput = await this.userRepostiory.findByUsername(username);
 
     if (!UserOutput)
       throw new Error(`Not found user with username ${username}`);
 
-    UserOutput.name = data.name;
-    UserOutput.lastName = data.last_name;
-    UserOutput.password = data.password;
-    UserOutput.city = data.city;
-    UserOutput.state = data.state as State;
-    UserOutput.neighborhood = data.neighborhood;
-    UserOutput.active = data.active;
-    UserOutput.telephone = data.telephone;
-    UserOutput.email = data.email;
+    UserOutput.name;
+    UserOutput.lastName;
+    UserOutput.password;
+    UserOutput.city;
+    UserOutput.state;
+    UserOutput.neighborhood;
+    UserOutput.active;
+    UserOutput.telephone;
+    UserOutput.email;
     UserOutput.updatedAt = new Date();
 
     await this.userRepostiory.update(username, data);
 
-    return { UserOutput };
+    return UserOutput;
   }
 }
