@@ -29,12 +29,12 @@ export class UserController {
     return { UserOutput };
   }
 
-  @ApiOperation({ summary: 'Get user by username' })
-  @ApiParam({ name: 'username', required: true })
-  @Get(':username')
+  @ApiOperation({ summary: 'Get user by user name' })
+  @ApiParam({ name: 'userName', required: true })
+  @Get(':userName')
   async findByUsername(@Param() params) {
     const { data } = await this._getByUsernameUseCase.execute({
-      username: params.username,
+      userName: params.userName,
     });
 
     return { data: UserViewModel.toHttp(data) };
@@ -43,7 +43,7 @@ export class UserController {
   @ApiOperation({ summary: 'Updated a user' })
   @ApiParam({ name: 'username', required: true })
   @Put(':username')
-  async update(@Param() params, @Body() body: UserControllerDto) {
+  async update(@Param() params, @Body() body: UserUpdateControllerDto) {
     const UserOutput = this._updateUserUseCase.execute(params.username, body);
 
     return UserOutput;

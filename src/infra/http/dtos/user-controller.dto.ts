@@ -12,6 +12,9 @@ export class UserControllerDto {
   last_name: string;
 
   @ApiProperty()
+  user_name: string;
+
+  @ApiProperty()
   telephone: string[];
 
   @ApiProperty()

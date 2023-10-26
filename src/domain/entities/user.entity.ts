@@ -5,6 +5,7 @@ import { AvailableTime } from './available-time.entity';
 export interface UserData extends EntityBaseData {
   name: string;
   lastName: string;
+  userName: string;
   telephone: string[];
   email: string;
   password: string;
@@ -37,6 +38,13 @@ export class User extends EntityBase {
   }
   public set lastName(lastName: string) {
     this.props.lastName = lastName;
+  }
+
+  public get userName(): string {
+    return this.props.userName;
+  }
+  public set userName(userName: string) {
+    this.props.userName = userName;
   }
 
   public get telephone(): string[] {

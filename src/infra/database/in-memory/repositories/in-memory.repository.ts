@@ -21,7 +21,7 @@ export class InMemoryUserRepository implements UserRepository {
 
   async update(username: string, data: User): Promise<void> {
     const userFindByUsername = this.user.find(
-      (user) => user.email === username,
+      (user) => user.userName === username,
     );
 
     userFindByUsername.name = data.name;
@@ -31,12 +31,12 @@ export class InMemoryUserRepository implements UserRepository {
     userFindByUsername.state = data.state as State;
     userFindByUsername.neighborhood = data.neighborhood;
     userFindByUsername.telephone = data.telephone;
-    //userFindByUsername.email = data.email;
+    userFindByUsername.email = data.email;
   }
 
   async findByUsername(username: string): Promise<User> {
     const userFindByUsername = this.user.find(
-      (user) => user.email === username,
+      (user) => user.userName === username,
     );
 
     return userFindByUsername;
