@@ -44,11 +44,8 @@ export class UserController {
   @ApiParam({ name: 'username', required: true })
   @Put(':username')
   async update(@Param() params, @Body() body: UserControllerDto) {
-    const UserOutput = this._updateUserUseCase.execute(
-      params.username,
-      body,
-    );
+    const UserOutput = this._updateUserUseCase.execute(params.username, body);
 
-    return UserOutput ;
+    return UserOutput;
   }
 }

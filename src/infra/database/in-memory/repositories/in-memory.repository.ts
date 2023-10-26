@@ -19,11 +19,11 @@ export class InMemoryUserRepository implements UserRepository {
     throw new Error('Method not implemented.');
   }
 
-  async update(username: string, data: UserData): Promise<void> {
+  async update(username: string, data: User): Promise<void> {
     const userFindByUsername = this.user.find(
       (user) => user.email === username,
     );
-    
+
     userFindByUsername.name = data.name;
     userFindByUsername.lastName = data.lastName;
     userFindByUsername.password = data.password;

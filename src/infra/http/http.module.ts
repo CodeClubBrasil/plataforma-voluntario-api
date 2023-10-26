@@ -5,7 +5,7 @@ import {
   GetByUsernameUseCase,
   UpdateUserUseCase,
 } from '@application/use-cases';
-import { DatabaseModule } from './database/database.module';
+import { DatabaseModule } from '@infra/database/database.module';
 
 @Module({
   imports: [DatabaseModule],
