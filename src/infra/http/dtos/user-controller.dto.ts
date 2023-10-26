@@ -42,9 +42,6 @@ export class UserControllerDto {
   active: boolean;
 
   @ApiProperty()
-  is_deleted: boolean;
-
-  @ApiProperty()
   created_at: Date;
 
   @ApiProperty()

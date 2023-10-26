@@ -19,7 +19,7 @@ export class GetByUsernameUseCase {
   }: GetByUsernameInput): Promise<GetByUsernameOutput> {
     const data = await this.userRepository.findByUsername(userName);
 
-   if (!data) throw new Error(`Not found user with username ${userName}`);
+    if (!data) throw new Error(`Not found user with username ${userName}`);
 
     return { data };
   }

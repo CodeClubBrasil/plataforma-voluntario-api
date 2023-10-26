@@ -24,7 +24,6 @@ export class CreateUserUseCase {
       neighborhood: request.neighborhood,
       knowLedges: request.know_ledges,
       active: true,
-      isDeleted: false,
       createdAt: new Date(),
       updatedAt: null,
       availableTime: availableTimes,
@@ -42,7 +41,6 @@ function dtoToData(dto: AvailableTimeDto): AvailableTime {
     timeStart: dto.time_start,
     timeEnd: dto.time_end,
     active: dto.active,
-    isDeleted: dto.is_deleted,
     createdAt: dto.created_at,
     updatedAt: null,
   };

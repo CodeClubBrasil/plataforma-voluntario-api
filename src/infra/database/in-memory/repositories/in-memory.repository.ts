@@ -1,7 +1,6 @@
 import { UserRepository } from '@application/repositories';
 import { User, UserData } from '@domain/entities';
 import { State } from '@domain/enums';
-import { UserUpdateControllerDto } from '@infra/http/dtos/user-update.controller.dto';
 import { Injectable } from '@nestjs/common';
 
 Injectable();

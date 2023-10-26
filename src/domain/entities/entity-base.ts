@@ -3,7 +3,6 @@ import { randomUUID } from 'crypto';
 export interface EntityBaseData {
   id?: string;
   active: boolean;
-  isDeleted: boolean;
   createdAt: Date;
   updatedAt?: Date | null;
 }
@@ -33,13 +32,6 @@ export class EntityBase {
   }
   public set active(active: boolean) {
     this.props.active = active;
-  }
-
-  public get isDeleted(): boolean {
-    return this.props.isDeleted;
-  }
-  public set isDeleted(isDeleted: boolean) {
-    this.props.isDeleted = isDeleted;
   }
 
   public get updatedAt(): Date | null {

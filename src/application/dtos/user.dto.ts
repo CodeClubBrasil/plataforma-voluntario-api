@@ -13,7 +13,6 @@ export class UserDto {
   know_ledges: string[];
   available_time: AvailableTimeDto[] | null;
   active: boolean;
-  is_deleted: boolean;
   created_at: Date;
   updated_at: Date;
 }
