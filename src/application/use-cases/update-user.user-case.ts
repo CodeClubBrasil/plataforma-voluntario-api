@@ -22,7 +22,7 @@ interface UpdateUserResponse {
 export class UpdateUserUseCase {
   constructor(private userRepostiory: UserRepository) {}
 
-  async execute(username: string, data: UpdateUserRequest): Promise<User> {
+  async execute(username: string, data: UpdateUserRequest): Promise<UpdateUserResponse> {
     const UserOutput = await this.userRepostiory.findByUsername(username);
 
     if (!UserOutput)
@@ -41,6 +41,6 @@ export class UpdateUserUseCase {
 
     await this.userRepostiory.update(username, data);
 
-    return UserOutput;
+    return { UserOutput };
   }
 }

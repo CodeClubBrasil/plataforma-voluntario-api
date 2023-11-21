@@ -1,7 +1,8 @@
+import { Weekday } from '@domain/enums';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class AvailableTimeControllerDto {
-  @ApiProperty()
+  @ApiProperty({ enum: Weekday })
   week_day: string;
 
   @ApiProperty()
@@ -10,12 +11,9 @@ export class AvailableTimeControllerDto {
   @ApiProperty()
   time_end: Date;
 
-  @ApiProperty()
   active: boolean;
 
-  @ApiProperty()
   created_at: Date;
 
-  @ApiProperty()
   updated_at: Date;
 }
