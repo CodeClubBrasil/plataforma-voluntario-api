@@ -8,7 +8,6 @@ import { ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { UserControllerDto } from '../dtos';
 import { UserUpdateControllerDto } from '../dtos/user-update.controller.dto';
 import { UserViewModel } from '../view-models';
-import { User } from '@domain/entities';
 
 @ApiTags('User')
 @Controller('user')
@@ -30,11 +29,11 @@ export class UserController {
   }
 
   @ApiOperation({ summary: 'Get user by user name' })
-  @ApiParam({ name: 'userName', required: true })
-  @Get(':userName')
+  @ApiParam({ name: 'username', required: true })
+  @Get(':username')
   async findByUsername(@Param() params) {
     const { data } = await this._getByUsernameUseCase.execute({
-      userName: params.userName,
+      userName: params.username,
     });
 
     return { data: UserViewModel.toHttp(data) };

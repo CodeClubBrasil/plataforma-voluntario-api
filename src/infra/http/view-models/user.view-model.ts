@@ -7,6 +7,7 @@ export class UserViewModel {
       id: user.id,
       name: user.name,
       last_name: user.lastName,
+      user_name: user.userName,
       telephone: user.telephone,
       email: user.email,
       password: user.password,
