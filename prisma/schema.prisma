@@ -6,20 +6,76 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-model Address {
+model user {
+  id              String          @id @default(uuid())
+  active          Boolean
+  created_at      DateTime        @default(now())
+  updated_at      DateTime?       @updatedAt
+  name            String
+  last_name       String
+  user_name       String
+  telephone       String[]
+  email           String
+  password        String
+  city            String
+  state           State
+  neighborhood    String
+  knowledges      String[]
+  available_times available_time[]
+}
+
+model available_time {
   id         String    @id @default(uuid())
-  zip_code   String
-  address    String
-  city       String
-  state      String
   active     Boolean
-  is_deleted Boolean
   created_at DateTime  @default(now())
   updated_at DateTime? @updatedAt
+  week_day   Weekday
+  time_start DateTime
+  time_end   DateTime
+  user_id    String
+  user       user      @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
 
-  @@map("address")
+enum State {
+  AC
+  AL
+  AP
+  AM
+  BA
+  CE
+  DF
+  ES
+  GO
+  MA
+  MT
+  MS
+  MG
+  PA
+  PB
+  PR
+  PE
+  PI
+  RJ
+  RN
+  RS
+  RO
+  RR
+  SC
+  SP
+  SE
+  TO
+}
+
+enum Weekday {
+  SUNDAY
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
 }

@@ -1,2 +1,2 @@
-export * from './list-address.view-model';
-export * from './address.view-model';
+export * from './user.view-model';
+export * from './available-time.view-model';

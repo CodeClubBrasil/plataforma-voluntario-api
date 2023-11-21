@@ -15,9 +15,9 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('plataforma-voluntario-api')
     .setDescription('Plataforma voluntário api')
-    .setVersion('3.0.0')
+    .setVersion('4.0.0')
     .setContact(
-      'Code Club Brasil (Valter Gabriel, Victor Hugo)',
+      'Code Club Brasil (Victor Hugo)',
       'https://www.codeclubbrasil.org.br/',
       'contato@codeclubbrasil.org.br',
     )

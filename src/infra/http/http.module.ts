@@ -1,23 +1,15 @@
 import { Module } from '@nestjs/common';
-import { DatabaseModule } from '../prisma/database.module';
-import { AddressController } from './controllers/address.controller';
+import { UserController } from './controllers';
 import {
-  CreateAddressUseCase,
-  DeleteAddressUseCase,
-  FindByIdAddressUseCase,
-  GetAddressUseCase,
-  UpdateAddressUseCase,
-} from 'src/application/use-cases';
+  CreateUserUseCase,
+  GetByUsernameUseCase,
+  UpdateUserUseCase,
+} from '@application/use-cases';
+import { DatabaseModule } from '@infra/database/database.module';
 
 @Module({
   imports: [DatabaseModule],
-  controllers: [AddressController],
-  providers: [
-    CreateAddressUseCase,
-    GetAddressUseCase,
-    FindByIdAddressUseCase,
-    UpdateAddressUseCase,
-    DeleteAddressUseCase,
-  ],
+  controllers: [UserController],
+  providers: [CreateUserUseCase, GetByUsernameUseCase, UpdateUserUseCase],
 })
 export class HttpModule {}
