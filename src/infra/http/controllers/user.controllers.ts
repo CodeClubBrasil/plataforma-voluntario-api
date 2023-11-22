@@ -25,7 +25,7 @@ export class UserController {
     const { UserOutput } = await this._createUserUseCase.execute({
       ...body,
     });
-    return { UserOutput: UserViewModel.toHttp(UserOutput) } ;
+    return { UserOutput: UserViewModel.toHttp(UserOutput) };
   }
 
   @ApiOperation({ summary: 'Get user by user name' })
@@ -43,8 +43,11 @@ export class UserController {
   @ApiParam({ name: 'username', required: true })
   @Put(':username')
   async update(@Param() params, @Body() body: UserUpdateControllerDto) {
-    const { UserOutput } = await this._updateUserUseCase.execute(params.username, body);
+    const { UserOutput } = await this._updateUserUseCase.execute(
+      params.username,
+      body,
+    );
 
-    return { UserOutput: UserViewModel.toHttp(UserOutput)};
+    return { UserOutput: UserViewModel.toHttp(UserOutput) };
   }
 }
