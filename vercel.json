@@ -2,16 +2,19 @@
   "version": 2,
   "builds": [
     {
-      "src": "src/**/*.ts",
-      "use": "@vercel/node",
-      "config": { "includeFiles": ["**/*.ts"] }
+      "src": "dist/main.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
-    { "src": "/swagger(.*)", "dest": "src/main.ts", "continue": true },
-    { "src": "/(.*)", "dest": "src/main.ts" }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+    {
+      "src": "/swagger(.*)",
+      "dest": "dist/main.js",
+      "continue": true
+    },
+    {
+      "src": "/(.*)",
+      "dest": "dist/main.js"
+    }
+  ]
 }
