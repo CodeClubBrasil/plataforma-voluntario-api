@@ -12,7 +12,7 @@ export interface UserData extends EntityBaseData {
   city: string;
   state: State;
   neighborhood: string;
-  knowLedges: string[];
+  knowledges: string[];
   availableTime: AvailableTime[];
 }
 
@@ -89,11 +89,11 @@ export class User extends EntityBase {
     this.props.neighborhood = neighborhood;
   }
 
-  public get knowLedges(): string[] {
-    return this.props.knowLedges;
+  public get knowledges(): string[] {
+    return this.props.knowledges;
   }
   public set knowLedges(knowLedges: string[]) {
-    this.props.knowLedges = knowLedges;
+    this.props.knowledges = knowLedges;
   }
 
   public get availableTime(): AvailableTime[] {

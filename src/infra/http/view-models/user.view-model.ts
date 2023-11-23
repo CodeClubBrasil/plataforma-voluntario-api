@@ -14,7 +14,7 @@ export class UserViewModel {
       city: user.city,
       state: user.state,
       neighborhood: user.neighborhood,
-      know_ledges: user.knowLedges,
+      knowledges: user.knowLedges,
       available_time: AvailableTimeViewModel.toHttpList(user.availableTime),
       active: user.active,
       created_at: user.createdAt,

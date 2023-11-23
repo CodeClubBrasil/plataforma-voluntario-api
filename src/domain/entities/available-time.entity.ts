@@ -5,6 +5,7 @@ export interface AvailableTimeData extends EntityBaseData {
   weekDay: Weekday;
   timeStart: Date;
   timeEnd: Date;
+  userId: string;
 }
 
 export class AvailableTime extends EntityBase {
@@ -36,5 +37,12 @@ export class AvailableTime extends EntityBase {
   }
   public set timeEnd(timeEnd: Date) {
     this.props.timeEnd = timeEnd;
+  }
+
+  public get userId(): string {
+    return this.props.userId;
+  }
+  public set userId(userId: string) {
+    this.props.userId = userId;
   }
 }

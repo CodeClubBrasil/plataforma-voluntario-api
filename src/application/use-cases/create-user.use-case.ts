@@ -22,7 +22,7 @@ export class CreateUserUseCase {
       city: request.city,
       state: request.state as State,
       neighborhood: request.neighborhood,
-      knowLedges: request.know_ledges,
+      knowledges: request.knowledges,
       active: true,
       createdAt: new Date(),
       updatedAt: null,
@@ -43,6 +43,7 @@ function dtoToData(dto: AvailableTimeDto): AvailableTime {
     active: dto.active,
     createdAt: dto.created_at,
     updatedAt: null,
+    userId: dto.user_id,
   };
 
   return new AvailableTime(availableTimeData);
@@ -58,7 +59,7 @@ interface UserRequest {
   city: string;
   state: string;
   neighborhood: string;
-  know_ledges: string[];
+  knowledges: string[];
   available_time: AvailableTimeDto[];
 }
 

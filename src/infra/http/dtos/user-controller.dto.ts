@@ -33,7 +33,7 @@ export class UserControllerDto {
   neighborhood: string;
 
   @ApiProperty()
-  know_ledges: string[];
+  knowledges: string[];
 
   @ApiProperty({ type: [AvailableTimeControllerDto] })
   available_time: AvailableTimeControllerDto[] | null;
