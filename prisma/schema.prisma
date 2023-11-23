@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model user {
+model Users {
   id              String          @id @default(uuid())
   active          Boolean
   created_at      DateTime        @default(now())
@@ -25,10 +25,12 @@ model user {
   state           State
   neighborhood    String
   knowledges      String[]
-  available_times available_time[]
+  available_times AvailableTimes[]
+
+  @@map("users")
 }
 
-model available_time {
+model AvailableTimes {
   id         String    @id @default(uuid())
   active     Boolean
   created_at DateTime  @default(now())
@@ -37,7 +39,9 @@ model available_time {
   time_start DateTime
   time_end   DateTime
   user_id    String
-  user       user      @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  user       Users      @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@map("available_times")
 }
 
 enum State {
@@ -68,6 +72,8 @@ enum State {
   SP
   SE
   TO
+
+  @@map("state")
 }
 
 enum Weekday {
@@ -78,4 +84,6 @@ enum Weekday {
   THURSDAY
   FRIDAY
   SATURDAY
+
+  @@map("weekday")
 }
