@@ -197,7 +197,7 @@ Esta estrutura de dados é usada para representar informações de voluntários 
 	"password": "123",   
 	"city": "Niterói",   
 	"state": "Rio de Janeiro",   
-	"neighborhood": "Icarai" }
+	"neighborhood": "Icarai"
 }
 ```
     
