@@ -213,4 +213,4 @@ Esta estrutura de dados é usada para representar informações de voluntários 
 - [Programação Orientada a Objetos (POO)](https://www.alura.com.br/artigos/poo-programacao-orientada-a-objetos)
 - [What is a REST API?](https://www.redhat.com/pt-br/topics/api/what-is-a-rest-api)
 
-**Créditos:** Esta documentação foi preparada por [Victor Hugo](https://github.com/torugo99) para a API do Voluntário Code Club Brasil.
+**Créditos:** Esta documentação foi preparada por [Victor Hugo](https://github.com/victor99dev) para a API do Voluntário Code Club Brasil.
