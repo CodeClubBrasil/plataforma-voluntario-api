@@ -11,10 +11,10 @@ datasource db {
 }
 
 model Users {
-  id              String          @id @default(uuid())
+  id              String           @id @default(uuid())
   active          Boolean
-  created_at      DateTime        @default(now())
-  updated_at      DateTime?       @updatedAt
+  created_at      DateTime         @default(now())
+  updated_at      DateTime?        @updatedAt
   name            String
   last_name       String
   user_name       String
@@ -39,7 +39,7 @@ model AvailableTimes {
   time_start DateTime
   time_end   DateTime
   user_id    String
-  user       Users      @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  user       Users     @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
   @@map("available_times")
 }
