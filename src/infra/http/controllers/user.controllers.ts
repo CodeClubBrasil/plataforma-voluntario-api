@@ -33,7 +33,7 @@ export class UserController {
   @Get(':username')
   async findByUsername(@Param() params) {
     const { data } = await this._getByUsernameUseCase.execute({
-      userName: params.username,
+      username: params.username,
     });
 
     return { data: UserViewModel.toHttp(data) };

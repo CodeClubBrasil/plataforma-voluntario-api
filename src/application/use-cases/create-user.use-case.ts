@@ -15,7 +15,7 @@ export class CreateUserUseCase {
     const UserOutput = new User({
       name: request.name,
       lastName: request.last_name,
-      userName: request.user_name,
+      username: request.username,
       telephone: request.telephone,
       email: request.email,
       password: request.password,
@@ -40,8 +40,8 @@ function dtoToData(dto: AvailableTimeDto): AvailableTime {
     weekDay: dto.week_day as Weekday,
     timeStart: dto.time_start,
     timeEnd: dto.time_end,
-    active: dto.active,
-    createdAt: dto.created_at,
+    active: true,
+    createdAt: new Date(),
     updatedAt: null,
     userId: dto.user_id,
   };
@@ -52,7 +52,7 @@ function dtoToData(dto: AvailableTimeDto): AvailableTime {
 interface UserRequest {
   name: string;
   last_name: string;
-  user_name: string;
+  username: string;
   telephone: string[];
   email: string;
   password: string;

@@ -3,7 +3,7 @@ import { User } from '@domain/entities';
 import { Injectable } from '@nestjs/common';
 
 interface GetByUsernameInput {
-  userName: string;
+  username: string;
 }
 
 interface GetByUsernameOutput {
@@ -15,11 +15,11 @@ export class GetByUsernameUseCase {
   constructor(private userRepository: UserRepository) {}
 
   async execute({
-    userName,
+    username,
   }: GetByUsernameInput): Promise<GetByUsernameOutput> {
-    const data = await this.userRepository.findByUsername(userName);
+    const data = await this.userRepository.findByUsername(username);
 
-    if (!data) throw new Error(`Not found user with username ${userName}`);
+    if (!data) throw new Error(`Not found user with userName ${username}`);
 
     return { data };
   }

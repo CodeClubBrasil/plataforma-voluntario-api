@@ -1,3 +1,4 @@
+import { AvailableTime } from './../../../domain/entities/available-time.entity';
 import { User } from '@domain/entities';
 import { State } from '@domain/enums';
 import {
@@ -11,15 +12,18 @@ export class PrismaUserMapper {
     return {
       id: user.id,
       name: user.name,
-      user_name: user.userName,
+      username: user.username,
+      last_name: user.lastName,
       telephone: user.telephone,
       email: user.email,
       password: user.password,
       city: user.city,
       state: user.state as State,
       neighborhood: user.neighborhood,
-      knowledges: user.knowLedges, //ARRAY
-      available_time: user.availableTime, //ARRAY
+      knowledges: user.knowledges,
+      available_times: PrismaAvailableTimeMapper.toPrismaList(
+        user.availableTime,
+      ),
       active: user.active,
       created_at: user.createdAt,
       updated_at: user.updatedAt,
@@ -31,14 +35,14 @@ export class PrismaUserMapper {
       id: raw.id,
       name: raw.name,
       lastName: raw.last_name,
-      userName: raw.user_name,
+      username: raw.username,
       telephone: raw.telephone,
       email: raw.email,
       password: raw.password,
       city: raw.city,
       state: raw.state as State,
       neighborhood: raw.neighborhood,
-      knowledges: raw.knowledges, //ARRAY
+      knowledges: raw.knowledges,
       availableTime: PrismaAvailableTimeMapper.toDomainList(availableTimes),
       active: raw.active,
       createdAt: raw.created_at,

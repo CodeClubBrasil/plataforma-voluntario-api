@@ -126,7 +126,7 @@ Esta estrutura de dados é usada para representar informações de voluntários 
 {
   "name": "string",
   "last_name": "string",
-  "user_name": "string",
+  "username": "string",
   "telephone": [
     "string"
   ],

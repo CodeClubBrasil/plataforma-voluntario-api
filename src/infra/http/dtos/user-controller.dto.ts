@@ -12,7 +12,7 @@ export class UserControllerDto {
   last_name: string;
 
   @ApiProperty()
-  user_name: string;
+  username: string;
 
   @ApiProperty()
   telephone: string[];
@@ -44,6 +44,5 @@ export class UserControllerDto {
   @ApiProperty()
   created_at: Date;
 
-  @ApiProperty()
   updated_at: Date;
 }
