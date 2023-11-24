@@ -124,27 +124,30 @@ Esta estrutura de dados é usada para representar informações de voluntários 
 - **Payload**:
 ```json
 {
-  "name": "Marry",
-  "lastName": "Marry",
-  "tels": ["tels", "tels"],
-  "email": "marry@gmail.com",
-  "password": "123",
-  "city": "Niterói",
-  "state": "Rio de Janeiro",
-  "neighborhood": "Icarai",
-  "knowledges": ["Programacao", "Designer", "Professor"],
+  "name": "string",
+  "last_name": "string",
+  "user_name": "string",
+  "telephone": [
+    "string"
+  ],
+  "email": "string",
+  "password": "string",
+  "city": "string",
+  "state": "AC",
+  "neighborhood": "string",
+  "knowledges": [
+    "string"
+  ],
   "available_time": [
     {
-      "week_day": "monday",
-      "time_start": "10:00",
-      "time_end": "11:00"
-    },
-    {
-      "week_day": "tuesday",
-      "time_start": "10:00",
-      "time_end": "11:00"
+      "week_day": "sunday",
+      "time_start": "2023-11-24T00:16:13.903Z",
+      "time_end": "2023-11-24T00:16:13.903Z"
     }
-  ]
+  ],
+  "active": true,
+  "created_at": "2023-11-24T00:16:13.903Z",
+  "updated_at": "2023-11-24T00:16:13.903Z"
 }
 ```
 - **Respostas**:
@@ -189,15 +192,18 @@ Esta estrutura de dados é usada para representar informações de voluntários 
     - `username` (obrigatório) - O nome do usuário a ser atualizado.
 - **Payload**:
 ```json
-{   
-	"name": "Marry",   
-	"lastName": "Marry",   
-	"tels": ["tels", "tels"],   
-	"email": "marry@gmail.com",   
-	"password": "123",   
-	"city": "Niterói",   
-	"state": "Rio de Janeiro",   
-	"neighborhood": "Icarai"
+{
+  "name": "string",
+  "last_name": "string",
+  "password": "string",
+  "city": "string",
+  "state": "AC",
+  "neighborhood": "string",
+  "active": true,
+  "telephone": [
+    "string"
+  ],
+  "email": "string"
 }
 ```
     
