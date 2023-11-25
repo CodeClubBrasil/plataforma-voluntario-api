@@ -6,11 +6,10 @@ import { InMemoryUserRepository } from './in-memory/repositories/in-memory.repos
 
 @Module({
   providers: [
-    //PrismaService,
+    PrismaService,
     {
       provide: UserRepository,
-      //useClass: PrismaUserRepository,
-      useClass: InMemoryUserRepository,
+      useClass: PrismaUserRepository,
     },
   ],
   exports: [UserRepository],
