@@ -1,13 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { UserRepository } from '../repositories';
 import { User } from '@domain/entities';
+import { State } from '@domain/enums';
 
 interface UpdateUserRequest {
   last_name: string;
   password: string;
   city: string;
   name: string;
-  state: string;
+  state: State;
   neighborhood: string;
   telephone: string[];
   email: string;
@@ -44,6 +45,10 @@ export class UpdateUserUseCase {
 
     await this.userRepostiory.update(username, data);
 
-    return { UserOutput };
+    const updatedUserOutput = await this.userRepostiory.findByUsername(
+      username,
+    );
+
+    return { UserOutput: updatedUserOutput };
   }
 }
