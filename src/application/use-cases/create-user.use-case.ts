@@ -15,14 +15,14 @@ export class CreateUserUseCase {
     const UserOutput = new User({
       name: request.name,
       lastName: request.last_name,
-      userName: request.user_name,
+      username: request.username,
       telephone: request.telephone,
       email: request.email,
       password: request.password,
       city: request.city,
       state: request.state as State,
       neighborhood: request.neighborhood,
-      knowLedges: request.know_ledges,
+      knowledges: request.knowledges,
       active: true,
       createdAt: new Date(),
       updatedAt: null,
@@ -40,9 +40,10 @@ function dtoToData(dto: AvailableTimeDto): AvailableTime {
     weekDay: dto.week_day as Weekday,
     timeStart: dto.time_start,
     timeEnd: dto.time_end,
-    active: dto.active,
-    createdAt: dto.created_at,
+    active: true,
+    createdAt: new Date(),
     updatedAt: null,
+    userId: dto.user_id,
   };
 
   return new AvailableTime(availableTimeData);
@@ -51,14 +52,14 @@ function dtoToData(dto: AvailableTimeDto): AvailableTime {
 interface UserRequest {
   name: string;
   last_name: string;
-  user_name: string;
+  username: string;
   telephone: string[];
   email: string;
   password: string;
   city: string;
   state: string;
   neighborhood: string;
-  know_ledges: string[];
+  knowledges: string[];
   available_time: AvailableTimeDto[];
 }
 

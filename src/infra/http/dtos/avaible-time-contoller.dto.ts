@@ -11,6 +11,8 @@ export class AvailableTimeControllerDto {
   @ApiProperty()
   time_end: Date;
 
+  user_id: string;
+
   active: boolean;
 
   created_at: Date;

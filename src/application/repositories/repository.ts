@@ -3,7 +3,7 @@ export abstract class Repository<TEntity> {
 
   abstract sendDocument(data: TEntity): Promise<void>;
 
-  abstract update(username: string, data: any): Promise<void>;
+  abstract update(username: string, data: Partial<TEntity>): Promise<void>;
 
   abstract findByUsername(username: string): Promise<TEntity>;
 }

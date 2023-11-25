@@ -10,7 +10,7 @@ export class UserDto {
   city: string;
   state: string;
   neighborhood: string;
-  know_ledges: string[];
+  knowledges: string[];
   available_time: AvailableTimeDto[] | null;
   active: boolean;
   created_at: Date;
