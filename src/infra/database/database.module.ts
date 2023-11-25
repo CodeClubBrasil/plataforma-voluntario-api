@@ -9,7 +9,7 @@ import { InMemoryUserRepository } from './in-memory/repositories/in-memory.repos
     PrismaService,
     {
       provide: UserRepository,
-      useClass: PrismaUserRepository,
+      useClass: PrismaService,
     },
   ],
   exports: [UserRepository],
