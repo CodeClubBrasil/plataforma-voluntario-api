@@ -15,7 +15,7 @@ export class UserUpdateControllerDto {
   city: string;
 
   @ApiProperty({ enum: State })
-  state: string;
+  state: State;
 
   @ApiProperty()
   neighborhood: string;
