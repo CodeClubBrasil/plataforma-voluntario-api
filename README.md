@@ -50,6 +50,28 @@ A API do Voluntário Code Club Brasil é organizada de acordo com os princípios
     
 Esta estrutura permite que a API seja altamente flexível, facilitando a adição de novos recursos, a manutenção e a evolução contínua do sistema.
 
+## Comandos
+
+| **Comandos npm - Se preferir pode usar o yarn**                               |                                             **Descrição**|
+|------------------------------------------------|------------------------------------------------------------|
+|                          `npm install ou npm i`|               Instala todos os pacotes para o projeto funcionar.|
+|                                 `npm run build`|                                          Constroi o projeto.|
+|                                `npm run format`|               Por padrão, o nestjs  utiliza o lint para deixar o código com a sintaxe e o estilo padrão.|
+|                `npm start ou npm run start:dev`| Ambos os comandos para inicializar o projeto, sendo **npm run start:dev** para a utilização do projeto atualizado em tempo real a cada alteração.|
+
+| **Comando docker compose**                    |                                             **Descrição**|
+|------------------------------------------------|------------------------------------------------------------|
+|                          `docker compose up -d`|                                        Inicia um contêiner.|
+|                           `docker compose stop`|                               Para de executar p contêiner.|
+|                             `docker compose rm`|                   Remove os contêineres que estão pausados.|
+
+| **Comandos prisma**                            |                                             **Descrição**|
+|------------------------------------------------|------------------------------------------------------------|
+|`npx prisma migrate dev`| Criação de suas migrações, servindo para criar, atualizar ou excluir as tabelas ou campos de um determinado banco.|
+|   `npx prisma generate`|                                                                                             Gera o cliente Prisma.|
+|    `npx prisma db push`|                                                  Usado para sincronizar o esquema Prisma com o banco de dados.|
+
+
 ## Estrutura de Dados do Voluntário na API do Voluntário Code Club Brasil
 
 A estrutura de dados abaixo é usada para representar informações de voluntários na API do Voluntário Code Club Brasil. Cada campo possui um nome, tipo de dado e descrição para fornecer uma compreensão completa do JSON.
