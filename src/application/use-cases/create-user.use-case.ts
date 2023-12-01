@@ -2,7 +2,7 @@ import { AvailableTimeDto } from '@application/dtos';
 import { UserRepository } from '@application/repositories';
 import { AvailableTime, AvailableTimeData, User } from '@domain/entities';
 import { State, Weekday } from '@domain/enums';
-import { Injectable } from '@nestjs/common';
+import { ConflictException, Injectable } from '@nestjs/common';
 
 @Injectable()
 export class CreateUserUseCase {
@@ -13,7 +13,7 @@ export class CreateUserUseCase {
     const existingUsername = await this.userRepository.findByUsername(request.username);
 
     if (existingUsername) {
-      throw new Error(`User already exists: ${request.username}`);
+      throw new ConflictException(`User already exists with username: ${request.username}`);
     }
 
     const availableTimeDtos = request.available_time;

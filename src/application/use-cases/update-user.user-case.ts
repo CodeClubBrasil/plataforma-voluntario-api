@@ -1,7 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { UserRepository } from '../repositories';
 import { User } from '@domain/entities';
 import { State } from '@domain/enums';
+import { NotFoundError } from 'rxjs';
 
 interface UpdateUserRequest {
   last_name: string;
@@ -30,7 +31,7 @@ export class UpdateUserUseCase {
     const UserOutput = await this.userRepostiory.findByUsername(username);
 
     if (!UserOutput)
-      throw new Error(`Not found user with username ${username}`);
+      throw new NotFoundException(`Not found user with username: ${username}`);
 
     UserOutput.name;
     UserOutput.lastName;
