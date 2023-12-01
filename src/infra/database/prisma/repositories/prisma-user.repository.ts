@@ -37,6 +37,10 @@ export class PrismaUserRepository implements UserRepository {
       },
     });
 
+    if (!data?.available_times) {
+      return null;
+    }
+
     return PrismaUserMapper.toDomain(data, data.available_times);
   }
 

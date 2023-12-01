@@ -9,6 +9,13 @@ export class CreateUserUseCase {
   constructor(private userRepository: UserRepository) {}
 
   async execute(request: UserRequest): Promise<UserResponse> {
+
+    const existingUsername = await this.userRepository.findByUsername(request.username);
+
+    if (existingUsername) {
+      throw new Error(`User already exists: ${request.username}`);
+    }
+
     const availableTimeDtos = request.available_time;
     const availableTimes: AvailableTime[] = availableTimeDtos.map(dtoToData);
 
