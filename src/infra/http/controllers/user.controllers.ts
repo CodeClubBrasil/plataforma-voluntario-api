@@ -3,7 +3,15 @@ import {
   GetByUsernameUseCase,
   UpdateUserUseCase,
 } from '@application/use-cases';
-import { Body, Controller, Get, Param, Post, Put, UseFilters } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Put,
+  UseFilters,
+} from '@nestjs/common';
 import { ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { UserControllerDto } from '../dtos';
 import { UserUpdateControllerDto } from '../dtos/user-update.controller.dto';

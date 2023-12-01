@@ -9,11 +9,14 @@ export class CreateUserUseCase {
   constructor(private userRepository: UserRepository) {}
 
   async execute(request: UserRequest): Promise<UserResponse> {
-
-    const existingUsername = await this.userRepository.findByUsername(request.username);
+    const existingUsername = await this.userRepository.findByUsername(
+      request.username,
+    );
 
     if (existingUsername) {
-      throw new ConflictException(`User already exists with username: ${request.username}`);
+      throw new ConflictException(
+        `User already exists with username: ${request.username}`,
+      );
     }
 
     const availableTimeDtos = request.available_time;

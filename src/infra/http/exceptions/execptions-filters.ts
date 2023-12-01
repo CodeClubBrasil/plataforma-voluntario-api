@@ -26,7 +26,7 @@ export class ExceptionsFilter implements ExceptionFilter {
       [UnauthorizedException, () => HttpStatus.UNAUTHORIZED],
       [ForbiddenException, () => HttpStatus.FORBIDDEN],
       [InternalServerErrorException, () => HttpStatus.INTERNAL_SERVER_ERROR],
-      [ConflictException, () => HttpStatus.CONFLICT]
+      [ConflictException, () => HttpStatus.CONFLICT],
     ]);
 
     const statusFn = exceptionMap.get(exception.constructor);
