@@ -3,11 +3,12 @@ import {
   GetByUsernameUseCase,
   UpdateUserUseCase,
 } from '@application/use-cases';
-import { Body, Controller, Get, Param, Post, Put, Req } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put, UseFilters } from '@nestjs/common';
 import { ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { UserControllerDto } from '../dtos';
 import { UserUpdateControllerDto } from '../dtos/user-update.controller.dto';
 import { UserViewModel } from '../view-models';
+import { ExceptionsFilter } from '../exceptions';
 
 @ApiTags('User')
 @Controller('user')
@@ -19,6 +20,7 @@ export class UserController {
   ) {}
 
   @ApiOperation({ summary: 'Create a new user' })
+  @UseFilters(ExceptionsFilter)
   @ApiResponse({ status: 200 })
   @Post()
   async create(@Body() body: UserControllerDto) {
@@ -29,6 +31,7 @@ export class UserController {
   }
 
   @ApiOperation({ summary: 'Get user by user name' })
+  @UseFilters(ExceptionsFilter)
   @ApiParam({ name: 'username', required: true })
   @Get(':username')
   async findByUsername(@Param() params) {
@@ -40,6 +43,7 @@ export class UserController {
   }
 
   @ApiOperation({ summary: 'Updated a user' })
+  @UseFilters(ExceptionsFilter)
   @ApiParam({ name: 'username', required: true })
   @Put(':username')
   async update(@Param() params, @Body() body: UserUpdateControllerDto) {
