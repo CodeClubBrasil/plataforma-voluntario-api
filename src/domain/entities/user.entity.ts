@@ -136,8 +136,8 @@ export class UserValidator {
   static validateTelephone(telephones: string[]) {
     for (const telephone of telephones) {
       DomainException.When(
-        telephone.length > 14,
-        'Invalid telephone format, must be up to 14 digits.',
+        telephone.length > 15 || !/^\d+$/.test(telephone),
+        'Invalid telephone format, must be up to 14 digits and contain only numbers.',
       );
     }
   }
