@@ -2,7 +2,6 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { UserRepository } from '../repositories';
 import { User } from '@domain/entities';
 import { State } from '@domain/enums';
-import { NotFoundError } from 'rxjs';
 
 interface UpdateUserRequest {
   last_name: string;

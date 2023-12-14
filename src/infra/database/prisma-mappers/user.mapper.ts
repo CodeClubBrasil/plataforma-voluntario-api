@@ -1,4 +1,3 @@
-import { AvailableTime } from './../../../domain/entities/available-time.entity';
 import { User } from '@domain/entities';
 import { State } from '@domain/enums';
 import {
