@@ -56,7 +56,7 @@ describe('UserValidator', () => {
         'Invalid telephone format, must be up to 14 digits and contain only numbers.',
       );
       expect(() => {
-        UserValidator.validateTelephone(['123456789012345']);
+        UserValidator.validateTelephone(['1234567890123454']);
       }).toThrowError(
         'Invalid telephone format, must be up to 14 digits and contain only numbers.',
       );
