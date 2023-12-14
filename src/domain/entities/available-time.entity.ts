@@ -1,3 +1,4 @@
+import { DomainException } from '@domain/exceptions';
 import { Weekday } from '@domain/enums';
 import { EntityBase, EntityBaseData } from './entity-base';
 
@@ -13,15 +14,14 @@ export class AvailableTime extends EntityBase {
 
   constructor(props: AvailableTimeData) {
     super(props);
-    this.props = {
-      ...props,
-    };
+    this.props = { ...props };
   }
 
   public get weekDay(): Weekday {
     return this.props.weekDay;
   }
   public set weekDay(weekDay: Weekday) {
+    AvailableTimeValidator.validateWeekday(weekDay);
     this.props.weekDay = weekDay;
   }
 
@@ -44,5 +44,14 @@ export class AvailableTime extends EntityBase {
   }
   public set userId(userId: string) {
     this.props.userId = userId;
+  }
+}
+
+export class AvailableTimeValidator {
+  static validateWeekday(weekday: Weekday) {
+    DomainException.When(
+      !Object.values(Weekday).includes(weekday),
+      'Invalid weekday value.',
+    );
   }
 }
