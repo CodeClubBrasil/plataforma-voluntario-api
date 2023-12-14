@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { UserRepository } from '../repositories';
 import { User, UserValidator } from '@domain/entities';
 import { State } from '@domain/enums';

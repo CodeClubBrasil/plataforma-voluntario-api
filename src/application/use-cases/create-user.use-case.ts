@@ -9,7 +9,7 @@ import {
   UserValidator,
 } from '@domain/entities';
 import { State, Weekday } from '@domain/enums';
-import { ConflictException, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class CreateUserUseCase {

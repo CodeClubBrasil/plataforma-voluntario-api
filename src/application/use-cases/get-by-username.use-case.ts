@@ -1,7 +1,7 @@
 import { ApplicationNotFoundException } from '@application/exceptions';
 import { UserRepository } from '@application/repositories';
 import { User } from '@domain/entities';
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 
 interface GetByUsernameInput {
   username: string;
