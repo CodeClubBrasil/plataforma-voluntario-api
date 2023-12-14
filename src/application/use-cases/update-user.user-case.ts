@@ -1,7 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { UserRepository } from '../repositories';
-import { User } from '@domain/entities';
+import { User, UserValidator } from '@domain/entities';
 import { State } from '@domain/enums';
+import { ApplicationNotFoundException } from '@application/exceptions';
 
 interface UpdateUserRequest {
   last_name: string;
@@ -29,8 +30,19 @@ export class UpdateUserUseCase {
   ): Promise<UpdateUserResponse> {
     const UserOutput = await this.userRepostiory.findByUsername(username);
 
-    if (!UserOutput)
-      throw new NotFoundException(`Not found user with username: ${username}`);
+    ApplicationNotFoundException.When(
+      !UserOutput,
+      `Not found user with username: ${username}`,
+    );
+
+    UserValidator.validateName(data.name);
+    UserValidator.validateName(data.last_name);
+    UserValidator.validateTelephone(data.telephone);
+    UserValidator.validateEmail(data.email);
+    UserValidator.validatePassword(data.password);
+    UserValidator.validateCity(data.city);
+    UserValidator.validateState(data.state);
+    UserValidator.validateNeighborhood(data.neighborhood);
 
     UserOutput.name;
     UserOutput.lastName;
