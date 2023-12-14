@@ -1,8 +1,15 @@
 import { AvailableTimeDto } from '@application/dtos';
+import { ApplicationConflictException } from '@application/exceptions';
 import { UserRepository } from '@application/repositories';
-import { AvailableTime, AvailableTimeData, User } from '@domain/entities';
+import {
+  AvailableTime,
+  AvailableTimeData,
+  AvailableTimeValidator,
+  User,
+  UserValidator,
+} from '@domain/entities';
 import { State, Weekday } from '@domain/enums';
-import { ConflictException, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class CreateUserUseCase {
@@ -13,11 +20,20 @@ export class CreateUserUseCase {
       request.username,
     );
 
-    if (existingUsername) {
-      throw new ConflictException(
-        `User already exists with username: ${request.username}`,
-      );
-    }
+    ApplicationConflictException.When(
+      !!existingUsername,
+      `User already exists with username: ${request.username}`,
+    );
+
+    UserValidator.validateName(request.name);
+    UserValidator.validateUsername(request.username);
+    UserValidator.validateTelephone(request.telephone);
+    UserValidator.validateEmail(request.email);
+    UserValidator.validatePassword(request.password);
+    UserValidator.validateCity(request.city);
+    UserValidator.validateState(request.state as State);
+    UserValidator.validateNeighborhood(request.neighborhood);
+    UserValidator.validateKnowledges(request.knowledges);
 
     const availableTimeDtos = request.available_time;
     const availableTimes: AvailableTime[] = availableTimeDtos.map(dtoToData);
@@ -46,6 +62,7 @@ export class CreateUserUseCase {
 }
 
 function dtoToData(dto: AvailableTimeDto): AvailableTime {
+  AvailableTimeValidator.validateWeekday(dto.week_day as Weekday);
   const availableTimeData: AvailableTimeData = {
     weekDay: dto.week_day as Weekday,
     timeStart: dto.time_start,

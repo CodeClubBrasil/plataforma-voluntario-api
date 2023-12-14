@@ -1,5 +1,5 @@
 import { UserRepository } from '@application/repositories';
-import { User, UserData } from '@domain/entities';
+import { User } from '@domain/entities';
 import { State } from '@domain/enums';
 import { Injectable } from '@nestjs/common';
 
