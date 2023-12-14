@@ -51,13 +51,23 @@ describe('UserValidator', () => {
   describe('validateTelephone', () => {
     it('should throw an error when validating invalid telephone formats', () => {
       expect(() => {
-        UserValidator.validateTelephone(['12323432412424242342341234213']);
-      }).toThrowError('Invalid telephone format, must be up to 14 digits.');
+        UserValidator.validateTelephone(['a2e2e223']);
+      }).toThrowError(
+        'Invalid telephone format, must be up to 14 digits and contain only numbers.',
+      );
+      expect(() => {
+        UserValidator.validateTelephone(['123456789012345']);
+      }).toThrowError(
+        'Invalid telephone format, must be up to 14 digits and contain only numbers.',
+      );
     });
 
     it('should not throw an error when validating a valid telephone format', () => {
       expect(() => {
         UserValidator.validateTelephone(['12345678901234']);
+      }).not.toThrowError();
+      expect(() => {
+        UserValidator.validateTelephone(['1234567890']);
       }).not.toThrowError();
     });
   });

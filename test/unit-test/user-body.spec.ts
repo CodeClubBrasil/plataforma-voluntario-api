@@ -153,7 +153,9 @@ describe('User', () => {
 
     expect(() => {
       user.telephone = ['invalidPhoneNumber'];
-    }).toThrowError('Invalid telephone format, must be up to 14 digits.');
+    }).toThrowError(
+      'Invalid telephone format, must be up to 14 digits and contain only numbers.',
+    );
   });
 
   it('should throw an error when setting an invalid email format', () => {
@@ -228,7 +230,7 @@ describe('User', () => {
     expect(() => {
       user.password = 'password123';
     }).toThrowError(
-        /Invalid password format.*must contain.*uppercase letter.*lowercase letter.*number.*special character.*underscore.*at least 8 characters long/,
+      /Invalid password format.*must contain.*uppercase letter.*lowercase letter.*number.*special character.*underscore.*at least 8 characters long/,
     );
   });
 
