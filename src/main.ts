@@ -17,7 +17,7 @@ async function bootstrap() {
     .setDescription('Plataforma voluntário api')
     .setVersion('4.0.0')
     .setContact(
-      'Code Club Brasil (Victor Hugo)',
+      'Code Club Brasil (Victor Hugo, Felipe Fernandes)',
       'https://www.codeclubbrasil.org.br/',
       'contato@codeclubbrasil.org.br',
     )
