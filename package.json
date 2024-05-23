@@ -8,7 +8,6 @@
   "main": "src/main.ts",
   "scripts": {
     "postinstall": "prisma generate",
-    "prebuild": "rimraf dist",
     "build": "prisma generate && nest build && npm run build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
