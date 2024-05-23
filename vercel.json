@@ -1,0 +1,14 @@
+{
+    "version": 2,
+    "builds": [
+      { "src": "npm run build && cp src/main.ts dist/main.ts", "use": "@vercel/static-build" }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "dist/main.ts",
+        "methods": ["GET", "POST", "PUT", "PATCH", "DELETE"]
+      }
+    ]
+  }
+  
