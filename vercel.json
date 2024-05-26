@@ -1,10 +1,9 @@
 {
     "version": 2,
     "name": "plataforma-voluntario-api",
-    "outputDirectory": "dist",
     "builds": [
         {
-            "src": "/(.*)",
+            "src": "dist/main.js",
             "use": "@vercel/node"
         }
     ],
