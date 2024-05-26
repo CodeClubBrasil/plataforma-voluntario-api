@@ -5,8 +5,7 @@
     "builds": [
         {
             "src": "*.js",
-            "use": "@vercel/node",
-            "buildCommand": "npm run build"
+            "use": "@vercel/node"
         }
     ],
     "routes": [
