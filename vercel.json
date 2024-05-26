@@ -1,7 +1,12 @@
 {
     "version": 2,
     "name": "plataforma-voluntario-api",
+    
+    "outputDirectory": "build",
     "builds": [
+        {
+            "installCommand": "npm install"
+        },
         {
           "src": "dist/main.js",
           "use": "@vercel/node"
