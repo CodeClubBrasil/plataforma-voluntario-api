@@ -2,8 +2,6 @@
     "version": 2,
     "name": "plataforma-voluntario-api",
     "outputDirectory": "dist",
-    "buildCommand": "npm run build",
-    "installCommand": "npm install",
     "builds": [
         {
             "src": "/(.*)",
