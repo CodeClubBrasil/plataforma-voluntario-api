@@ -1,10 +1,16 @@
 {
     "version": 2,
     "name": "plataforma-voluntario-api",
+    "builds": [
+        {
+          "src": "dist/main.js",
+          "use": "@vercel/node"
+        }
+      ],
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "/dist/main.js",
+            "dest": "dist/main.js",
             "methods": [
                 "GET",
                 "POST",
@@ -12,10 +18,7 @@
                 "DELETE",
                 "PATCH",
                 "OPTIONS"
-            ],
-            "headers": {
-                "Access-Control-Allow-Origin": "*"
-            }
+            ]
         }
     ]
 }
